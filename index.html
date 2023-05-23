@@ -1,24 +1,35 @@
 <!DOCTYPE html>
 
     1<html>
-<style>
 <head>
-  <title>B Fit Fitness Tracker App</title>
+  <link rel="stylesheet" href="style.css">
+  <title> BFit Fitness Tracker App</title>
   <link rel="stylesheet" type="text/css" href="style.css">
+  <style> 
+
+
+</style>
 </head>
 <body>
   <header>
-    <h1>Fitness Tracker</h1>
+    <h1>BFIT Fitness Tracker</h1>
   </header>
-
+ 
+  <form action="signup.php" method="POST">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required><br><br>
+    
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required><br><br>
+    
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required><br><br>
+    
+    <p><a href="Players.html">Sign Up</a></p>
   <div class="container">
     <section id="login-section">
-      <h2>Login</h2>
-      <form id="login-form">
-        <input type="email" id="email" placeholder="Email" required>
-        <input type="password" id="password" placeholder="Password" required>
-        <button type="submit">Login</button>
-      </form>
+      
+     
     </section>
 
     <section id="dashboard-section">
