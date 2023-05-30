@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+  <h1>Stopwatch</h1>
+  <Script>
+  let startTime;
+    let elapsedTime = 0;
+    let timerInterval;
+    
+    const timerElement = document.querySelector('.timer');
+    const startBtn = document.getElementById('startBtn');
+    const stopBtn = document.getElementById('stopBtn');
+    const resetBtn = document.getElementById('resetBtn');
+    
+    function startTimer() {
+      startTime = Date.now() - elapsedTime;
+      timerInterval = setInterval(updateTimer, 10);
+      toggleButtons(true, false, false);
+    }
+    
+    function stopTimer() {
+      clearInterval(timerInterval);
+      toggleButtons(false, true, true);
+    }
+    
+    function resetTimer() {
+      clearInterval(timerInterval);
+      elapsedTime = 0;
+      updateTimer();
+      toggleButtons(false, true, false);
+    }
+    
+    function updateTimer() {
+      const currentTime = Date.now();
+      elapsedTime = currentTime - startTime;
+      const formattedTime = formatTime(elapsedTime);
+      timerElement.textContent = formattedTime;
+    }
+    
+    function formatTime(time) {
+      const dateObj = new Date(time);
+      const minutes = dateObj.getUTCMinutes();
+      const seconds = dateObj.getUTCSeconds();
+      const milliseconds = Math.floor(dateObj.getUTCMilliseconds() / 10);
+      
+      return `${padTime(minutes)}:${padTime(seconds)}:${padTime(milliseconds)}`;
+    }
+    
+    function padTime(value) {
+      return value.toString().padStart(2, '0');
+    }
+    
+    function toggleButtons(start, stop, reset) {
+      startBtn.disabled = start;
+      stopBtn.disabled = stop;
+      resetBtn.disabled = reset;
+    }
+    
+    startBtn.addEventListener('click', startTimer);
+    stopBtn.addEventListener('click', stopTimer);
+    resetBtn.addEventListener('click', resetTimer);
+  
+  </script>
+    
+ 
+</body>
+</html>
