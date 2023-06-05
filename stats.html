@@ -2,41 +2,44 @@
 <html>
 <body>
 
-<h1>My First Web Page</h1>
-<p>My First Paragraph</p>
-
-<p id="demo"></p>
+<h1>Stat Table</h1>
+<p>Take a look at your stats!</p>
+<p><a href="Home Page.html">Back to the home page</a></p>
+<p id="Table"></p>
 
 <script>
 const workoutLog = [
-    { date: '2023-05-30', exercise: 'Push-ups', sets: 3, reps: 10 },
-    { date: '2023-05-31', exercise: 'Plank', sets: 3, reps: 1- 2 },
-    { date: '2023-06-01', exercise: 'Squats', sets: 3, reps: 10 },
-   
-  ];
-  
-  
-  let totalSets = 0;
-  let totalReps = 0;
-  
-  for (const entry of workoutLog) {
+    { date: 'Today', exercise: 'Push-ups', sets: 3, reps: 10 },
+    { date: 'Tomorrow', exercise: 'Plank', sets: 3, reps: 12 },
+    { date: 'After Tomorrow', exercise: 'Squats', sets: 3, reps: 10 },
+];
+
+let totalSets = 0;
+let totalReps = 0;
+
+for (const entry of workoutLog) {
     totalSets += entry.sets;
     totalReps += entry.reps;
-  }
-  
- 
-  const averageSets = totalSets / workoutLog.length;
-  const averageReps = totalReps / workoutLog.length;
-  
-  
-  console.log('Date\t\tExercise\tSets\tReps');
-  for (const entry of workoutLog) {
-    console.log(`${entry.date}\t${entry.exercise}\t${entry.sets}\t${entry.reps}`);
-  }
-  console.log('---------------------------------');
-  console.log(`Total:\t\t\t${totalSets}\t${totalReps}`);
-  console.log(`Average:\t\t${averageSets.toFixed(2)}\t${averageReps.toFixed(2)}`);
+}
+
+const averageSets = totalSets / workoutLog.length;
+const averageReps = totalReps / workoutLog.length;
+
+const tableHeader = 'Date\t\tExercise\tSets\tReps';
+let tableRows = '';
+
+for (const entry of workoutLog) {
+    tableRows += `<tr><td>${entry.date}</td><td>${entry.exercise}</td><td>${entry.sets}</td><td>${entry.reps}</td></tr>`;
+}
+
+const tableHTML = `<table><tr><th>${tableHeader}</th></tr>${tableRows}</table>`;
+
+document.getElementById("Table").innerHTML = tableHTML;
+console.log('---------------------------------');
+console.log(`Total:\t\t\t${totalSets}\t${totalReps}`);
+console.log(`Average:\t\t${averageSets.toFixed(2)}\t${averageReps.toFixed(2)}`);
 </script>
+
 
 </body>
 </html>
